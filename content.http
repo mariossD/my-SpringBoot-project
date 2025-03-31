@@ -20,7 +20,7 @@ Content-Type: application/json
 
 }
 
-### Update existing Content
+### Update existing content
 
 PUT http://localhost:8080/api/content/1
 Content-Type: application/json
@@ -36,3 +36,6 @@ Content-Type: application/json
   "url": ""
 
 }
+
+### Delete existing content
+DELETE http://localhost:8080/api/content/2
