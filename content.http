@@ -2,7 +2,7 @@
 GET http://localhost:8080/api/content
 
 ### Get by id
-GET http://localhost:8080/api/content
+GET http://localhost:8080/api/content/1
 
 ###Create new content
 POST http://localhost:8080/api/content
@@ -10,7 +10,7 @@ Content-Type: application/json
 
 {
     "id": 2,
-    "title": "My Second Blog",
+    "title": "The Second Title",
     "desc": "Second",
     "status": "IDEA",
     "contentType": "ARTICLE",
