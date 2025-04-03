@@ -1,19 +1,18 @@
 package com.Marios.Content_Calendar.model;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
+import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
-public record Content(Integer id,
-											@NotBlank
-											String title,
-											@NotEmpty
-											String desc,
-											Status status,
-											Type contentType,
-											LocalDateTime dateCreated,
-											LocalDateTime  dateUpdated,
-											String url) {
+public record Content(
+		@Id
+		Integer id,
+		String title,
+		String des,
+		Status status,
+		Type contentType,
+		LocalDateTime dateCreated,
+		LocalDateTime  dateUpdated,
+		String url) {
 
 }

@@ -1,19 +1,35 @@
 package com.Marios.Content_Calendar;
 
-import org.springframework.boot.ConfigurableBootstrapContext;
+import com.Marios.Content_Calendar.model.Content;
+import com.Marios.Content_Calendar.model.Status;
+import com.Marios.Content_Calendar.model.Type;
+import com.Marios.Content_Calendar.repository.ContentRepo;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 
-import java.util.Arrays;
+import java.time.LocalDateTime;
 
 @SpringBootApplication
 public class ContentCalendarApplication {
 
 	public static void main(String[] args) {
 
-		ConfigurableApplicationContext context = SpringApplication.run(ContentCalendarApplication.class,args);
-		Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
+   SpringApplication.run(ContentCalendarApplication.class, args);
 	}
-
+ @Bean
+ CommandLineRunner runner(ContentRepo repository) {
+		return args -> {
+			Content content = new Content(null,
+							"My third",
+							"First",
+							Status.IDEA,
+							Type.VIDEO,
+							LocalDateTime.now(),
+							null,
+							"");
+			repository.save(content);
+		};
+ }
 }

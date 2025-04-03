@@ -1,7 +1,7 @@
 package com.Marios.Content_Calendar.controller;
 
 import com.Marios.Content_Calendar.model.Content;
-import com.Marios.Content_Calendar.repository.ContentCollectionRepositroy;
+import com.Marios.Content_Calendar.repository.ContentRepo;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +14,13 @@ import java.util.List;
 @CrossOrigin
 public class ContentController {
 
-	private final ContentCollectionRepositroy repository;
+	private final ContentRepo repository;
 
 
-	public ContentController(ContentCollectionRepositroy repository) {
+	//private final ContentJdbcTemplate repository;
+
+
+	public ContentController(ContentRepo repository) {
 		this.repository = repository;
 	}
 
@@ -42,7 +45,6 @@ public class ContentController {
 
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@PutMapping("/{id}")
-
 	public void update(@RequestBody Content content,@PathVariable Integer id){
 		if(!repository.existsById(id)){
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Content not found");
@@ -56,6 +58,6 @@ public class ContentController {
 		if(!repository.existsById(id)){
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Content not found");
 		}
-		repository.delete(id);
+		repository.deleteById(id);
 	}
 }
